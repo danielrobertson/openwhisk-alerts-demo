@@ -21,19 +21,23 @@ A database of Users and Products contains the implicit relationship, for example
 }```
 
 and Product document
-```{
+```
+{
   "_id": "p620",
   "product": "Power",
   "model": "620"
-}```
+}
+```
 
 
-When a new product alert arrives and the function is triggered, we need to find the users for a given product, which can be accomplished via a View
-```function (doc) {
+When a new product alert arrives and the function is triggered, we need to find the users for a given product, which can be accomplished via a View (MapReduce)
+```
+function (doc) {
   if (doc.product_ids) {
         for (var pid in doc.product_ids) {
             emit(doc.product_ids[pid], doc);
         }
     }
-}```
+}
+```
 ````
