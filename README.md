@@ -27,7 +27,7 @@ and Product document
 ```
 {
   "_id": "p620",
-  "product": "Power",
+  "product": "IBM Power System",
   "model": "620"
 }
 ```
