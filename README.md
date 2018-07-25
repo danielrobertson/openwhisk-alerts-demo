@@ -45,13 +45,15 @@ function (doc) {
 ```
 
 Then new Cloudant documents are written for each user's product alert witha timestamp, to provide additional features like archiving the alrt, which could be picked up by a UI 
-```{
+```
+{
   "_id": "drobertson-p620-Wed Jul 25 2018 15:54:11 GMT+0000 (UTC)",
   "user": "drobertson",
   "product": "p620",
   "alert": "firmware not supported; please update",
   "is_archived": false
-}```
+}
+```
 
 ### Demo 
 ![demo](./openwhiskdemo.gif)
