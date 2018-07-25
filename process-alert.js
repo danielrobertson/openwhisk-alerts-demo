@@ -1,20 +1,17 @@
 /**
- *
  * @param   params.USER_ALERTS_DB Url for user alerts Cloudant database
- * @return The output of this action, which must be a JSON object.
- *
+ * @return status message: done or an error object
  */
 
 const nano = require("nano");
 
 function main(params) {
   return new Promise((resolve, reject) => {
-    console.log(
-      "Processing new alert with params - " + JSON.stringify(params, null, 2)
-    );
+    console.log("params - " + JSON.stringify(params, null, 2));
     const userAlertsDb = nano(params.USER_ALERTS_DB);
     const usersDb = nano(params.USERS_DB);
 
+    // find the user's who own the product
     usersDb.view(
       "views",
       "byProductId",
@@ -24,8 +21,9 @@ function main(params) {
       },
       (err, response) => {
         if (!err) {
-          const productUsers = (response.rows || []).map(p => p.doc);
-          productUsers.forEach(user => {
+          // for each user on a product, create a copy of the alert
+          (response.rows || []).map(data => {
+            const user = data.doc;
             const userAlert = {
               _id: user._id + "-" + params.product_id + "-" + new Date(),
               user: user._id,
