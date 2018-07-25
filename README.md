@@ -44,7 +44,7 @@ function (doc) {
 }
 ```
 
-Then new Cloudant documents are written for each user's product alert witha timestamp, to provide additional features like archiving the alrt, which could be picked up by a UI 
+New Cloudant documents are written for each user's product alert with metadata to provide additional features like archiving the alert in a UI dashboard
 ```
 {
   "_id": "drobertson-s8957-Wed Jul 25 2018 15:54:11 GMT+0000 (UTC)",
