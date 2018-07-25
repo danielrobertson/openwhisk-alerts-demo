@@ -43,3 +43,5 @@ function (doc) {
     }
 }
 ```
+
+![demo](./openwhiskdemo.gif)
