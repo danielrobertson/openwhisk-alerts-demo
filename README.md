@@ -10,7 +10,8 @@ An OpenWhisk function running in IBM Cloud Functions listens for Cloudant databa
 
 A database of Users and Products contains the implicit relationship, for example a User document
 
-````{
+```
+{
   "_id": "drobertson",
   "username": "drobertson",
   "name": "Daniel",
@@ -18,9 +19,11 @@ A database of Users and Products contains the implicit relationship, for example
     "p620",
     "s8957"
   ]
-}```
+}
+```
 
 and Product document
+
 ```
 {
   "_id": "p620",
@@ -29,8 +32,8 @@ and Product document
 }
 ```
 
-
 When a new product alert arrives and the function is triggered, we need to find the users for a given product, which can be accomplished via a View (MapReduce)
+
 ```
 function (doc) {
   if (doc.product_ids) {
@@ -40,4 +43,3 @@ function (doc) {
     }
 }
 ```
-````
