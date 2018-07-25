@@ -8,7 +8,7 @@ In this example, a user has an IBM Storwize storage product. This product is rea
 
 An OpenWhisk function running in IBM Cloud Functions listens for Cloudant database changes, which triggers the function to process the alert for each applicable User and write to additional Cloudant databases that can be used by the UI showing alerts to the user 🔔
 
-A database of Users and Products contains the implicit relationship, for example a User document
+A Cloudant server of Users and Products databases contain the implicit relationship, for example a User document
 
 ```
 {
