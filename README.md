@@ -2,7 +2,7 @@
 
 An OpenWhisk servleress example for user product alerts that takes a stream of generic product alerts and correlates them to the user's products to enable archive functionality in a highly scalable way.
 
-In this example, a user has an IBM Storwize storage product. This product is reaching capacity and emits alerts such as firmware update recommendations. While the product description is shared among many users in an organization, we would like to architect the database to allow each user in the organization to archive a particular product alert so they do not see the alert any more, while other users in the organization should continue seeing the alert. To accomplish this we need to create a cross-reference database that maps users to products and if they're archive state, which is prime opportunity for a serverless fuction that runs on demand.
+In this example, a user has an IBM Storwize storage product. This product is reaching capacity and emits alerts such as `10% disk space remaining`. While the product description is shared among many users in an organization, we would like to architect the database to allow each user in the organization to archive a particular product alert so they do not see the alert any more, while other users in the organization should continue seeing the alert. To accomplish this we need to create a cross-reference database that maps users to products and if they're archive state, which is prime opportunity for a serverless fuction that runs on demand.
 
 ### Implementation
 
@@ -26,9 +26,9 @@ and Product document
 
 ```
 {
-  "_id": "p620",
-  "product": "IBM Power System",
-  "model": "620"
+  "_id": "s8957",
+  "product": "IBM Storwize System",
+  "model": "8957"
 }
 ```
 
@@ -47,10 +47,10 @@ function (doc) {
 Then new Cloudant documents are written for each user's product alert witha timestamp, to provide additional features like archiving the alrt, which could be picked up by a UI 
 ```
 {
-  "_id": "drobertson-p620-Wed Jul 25 2018 15:54:11 GMT+0000 (UTC)",
+  "_id": "drobertson-s8957-Wed Jul 25 2018 15:54:11 GMT+0000 (UTC)",
   "user": "drobertson",
-  "product": "p620",
-  "alert": "firmware not supported; please update",
+  "product": "s8957",
+  "alert": "10% disk space remaining",
   "is_archived": false
 }
 ```
